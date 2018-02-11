@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 app.set('view engine', 'hbs');
@@ -90,6 +91,6 @@ app.get('/nlReglement', (req,res)=>{
 //     email_field:req.body.email_field
 // }
 
-app.listen(3000, ()=>{
-  console.log('Server set up on port 3000');
+app.listen(port, ()=>{
+  console.log(`Server set up on port ${port}`);
 });
