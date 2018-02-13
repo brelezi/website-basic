@@ -1,11 +1,15 @@
 const express = require('express');
 const hbs = require('hbs');
+const mongodb = require('mongodb');
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000;
 var app = express();
 
 app.set('view engine', 'hbs');
 
+
+app.use(bodyParser.urlencoded({extended: false})); // IMPORTANT - LEARN WHY
 app.use(express.static('public'));
 hbs.registerPartials(__dirname + '/views/partials');
 
@@ -25,9 +29,40 @@ app.get('/contact',(req,res)=>{
   res.render('contact');
 });
 
-app.post('/confirmation', (req,res)=>{
-  res.render('confirmation');
-})
+app.post('/confirmation',(req,res)=>{
+
+  mongodb.connect('mongodb://localhost:27017/Subscriber', (err, db)=> {
+    if(err){
+      return console.log(err);
+    }
+    db.collection('Subscribers').insertOne({
+      nom_field: req.body.nomField,
+      prenom_field: req.body.prenomField,
+      pseudo_field: req.body.pseudoField,
+      dateDeNaissance_field:req.body.dateDeNaissanceField,
+      numTelephone_field: req.body.numTelephoneField,
+      email_field:req.body.emailField,
+      modeDePaiment_field: req.body.modeDePaimentField
+    });
+  });
+
+  res.render('confirmation',{
+    nom_field: req.body.nomField,
+    prenom_field: req.body.prenomField,
+    pseudo_field: req.body.pseudoField,
+    dateDeNaissance_field:req.body.dateDeNaissanceField,
+    numTelephone_field: req.body.numTelephoneField,
+    email_field:req.body.emailField,
+    modeDePaiment_field: req.body.modeDePaimentField
+  });
+
+
+
+
+  // ----------------------DISPLAY THE INFO------------------------------------------------
+
+
+});
 
 app.get('/reglement', (req,res)=>{
   res.render('reglement');
