@@ -15,26 +15,29 @@
 
         <div class="form-group">
 
-          <label for="nom">Nom </label>
+          <label for="nom">Nom/Name/Naam </label>
           <input class="form-control" id="name" type="text" name="nomField" placeholder="Nom" required>
 <br>
-          <label for="prenom">Prenom </label>
+          <label for="prenom">Prenom/First Name/Voornaam </label>
           <input class="form-control" id="prenom" type="text" name="prenomField" placeholder="Prenom" required>
 <br>
           <label for="pseudo">Pseudo </label>
           <input class="form-control" id="pseudo" type="text" name="pseudoField" placeholder="Pseudo" required>
 <br>
-          <label for="dateDeNaissance">Date de naissance </label>
-          <input class="form-control" id="dateDeNaissance" type="text" name="dateDeNaissanceField" placeholder="Date de naissance" required>
+          <label for="dateDeNaissance">Date de naissance/Birth Date/.... </label>
+          <div class="input-group">
+            <span class="input-group-addon">dd/mm/yyyy</span>
+            <input class="form-control" id="dateDeNaissance" type="text" name="dateDeNaissanceField" placeholder="Date de naissance" required>
+          </div>
 <br>
-          <label for="numTelephone">Numero de telephone </label>
+          <label for="numTelephone">Numero de telephone/Telephone Number/Telefoonummer </label>
           <input class="form-control" id="numTelephone" type="text" name="numTelephoneField" placeholder="Numero de telephone" required>
 <br>
-          <label for="email">Adresse email </label>
+          <label for="email">E-mail </label>
           <input class="form-control" id="email" type="text" name="emailField" placeholder="Adresse email" required>
           <small class="form-text text-muted">Your email will not be shared with anyone</small>
 <br>
-          <label for="modeDePaiment">Mode de paiment</label>
+          <label for="modeDePaiment">Mode de paiment/.../...</label>
           <select class="form-control" id="modeDePaiment" name="modeDePaimentField" >
           <option>Cash</option>
           <option>PayPal</option>
