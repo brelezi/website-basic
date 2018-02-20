@@ -12,17 +12,30 @@
 
   {{> nlNavbar}}
 
-  <ol>
-    <li>{{nom_field}}</li>
-    <li>{{prenom_field}}</li>
-    <li>{{pseudo_field}}</li>
-    <li>{{dateDeNaissance_field}}</li>
-    <li>{{numTelephone_field}}</li>
-    <li>{{email_field}}</li>
-    <li>{{modeDePaiment_field}}</li>
-  </ol>
+  {{> nlSliderConfirmation}}
 
-  {{> footer}}
+  <div class="container">
+    <div class="row mt-4">
+
+      <div class="col-md-6 ">
+        <div class="card p-4 mb-2  ml-5">
+          <div class="card-body">
+            <h4><p class="lead" id="slider-text">Hieronder vindt u de geregistreerde gegevens. Wij nemen zo spoedig mogelijk contact met u op per mail!</p>
+            </h4>
+            <ol class="list-group">
+              <li class="list-group-item">Naam: {{nom_field}}</li>
+              <li class="list-group-item">Voornaam: {{prenom_field}}</li>
+              <li class="list-group-item">Pseudo: {{pseudo_field}}</li>
+              <li class="list-group-item">Geboortedatum: {{dateDeNaissance_field}}</li>
+              <li class="list-group-item">Telefoonummer: {{numTelephone_field}}</li>
+              <li class="list-group-item">Email: {{email_field}}</li>
+              <li class="list-group-item">Betaalmogelijkheid: {{modeDePaiment_field}}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

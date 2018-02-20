@@ -34,6 +34,11 @@ body {
   background-size:cover;
 }
 
+.carousel-image-confirmation{
+  background:url('good.jpeg');
+  background-size:cover;
+}
+
 
 .fa {
   font-size: 55px;
@@ -67,4 +72,14 @@ footer#main-footer{
 .carousel-image-reg{
   background:url('manette.jpeg');
   background-size:cover;
+}
+
+@media (max-width:575px) {
+  #slider-text{
+    display: none;
+  }
+  #slider-title{
+    margin-bottom: 0.5em;
+    font-size: 65px;
+  }
 }

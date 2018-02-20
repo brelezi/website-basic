@@ -12,15 +12,32 @@
 
   {{> enNavbar}}
 
-  <ol>
-    <li>{{nom_field}}</li>
-    <li>{{prenom_field}}</li>
-    <li>{{pseudo_field}}</li>
-    <li>{{dateDeNaissance_field}}</li>
-    <li>{{numTelephone_field}}</li>
-    <li>{{email_field}}</li>
-    <li>{{modeDePaiment_field}}</li>
-  </ol>
+  {{> enSliderConfirmation}}
+
+  <div class="container">
+    <div class="row mt-4">
+
+      <div class="col-md-6 ">
+        <div class="card p-4 mb-2  ml-5">
+          <div class="card-body">
+            <h4><p class="lead" id="slider-text">Below you will find the registered data. We will contact you as soon as possible by mail!</p>
+            </h4>
+            <ol class="list-group">
+              <li class="list-group-item">Name: {{nom_field}}</li>
+              <li class="list-group-item">Surname: {{prenom_field}}</li>
+              <li class="list-group-item">Pseudo: {{pseudo_field}}</li>
+              <li class="list-group-item">Date of Birth: {{dateDeNaissance_field}}</li>
+              <li class="list-group-item">Telephone Number: {{numTelephone_field}}</li>
+              <li class="list-group-item">Email: {{email_field}}</li>
+              <li class="list-group-item">Method of Payment: {{modeDePaiment_field}}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   {{> footer}}
 

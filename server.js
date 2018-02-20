@@ -1,10 +1,13 @@
 const express = require('express');
 const hbs = require('hbs');
-const mongodb = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 3000;
+
 var app = express();
+const port = process.env.PORT || 3000;
+// const MONGO_URL = 'mongodb://malcolm:fifirstdbpassword@ds237848.mlab.com:37848/subscription';
+const MONGO_URL = 'mongodb://malcolm:fifirstdbpassword@ds237858.mlab.com:37858/socka';
 
 app.set('view engine', 'hbs');
 
@@ -31,20 +34,35 @@ app.get('/contact',(req,res)=>{
 
 app.post('/confirmation',(req,res)=>{
 
-  mongodb.connect('mongodb://localhost:27017/Subscriber', (err, db)=> {
-    if(err){
-      return console.log(err);
-    }
-    db.collection('Subscribers').insertOne({
-      nom_field: req.body.nomField,
-      prenom_field: req.body.prenomField,
-      pseudo_field: req.body.pseudoField,
-      dateDeNaissance_field:req.body.dateDeNaissanceField,
-      numTelephone_field: req.body.numTelephoneField,
-      email_field:req.body.emailField,
-      modeDePaiment_field: req.body.modeDePaimentField
+  setTimeout(()=>{
+    MongoClient.connect(MONGO_URL, (err, db) => {
+      if (err) {
+        return console.log(err);
+      }
+      // Do something with db here, like inserting a record
+      db.collection('subscriptions').insertOne(
+        {
+          nom_field: req.body.nomField,
+          prenom_field: req.body.prenomField,
+          pseudo_field: req.body.pseudoField,
+          dateDeNaissance_field:req.body.dateDeNaissanceField,
+          numTelephone_field: req.body.numTelephoneField,
+          email_field:req.body.emailField,
+          modeDePaiment_field: req.body.modeDePaimentField,
+          language: "FR"
+        },
+        function (err, res) {
+          if (err) {
+            db.close();
+            return console.log(err);
+          }
+          // Success
+          db.close();
+        }
+      )
     });
-  });
+  }, 3000);
+
 
   res.render('confirmation',{
     nom_field: req.body.nomField,
@@ -55,11 +73,6 @@ app.post('/confirmation',(req,res)=>{
     email_field:req.body.emailField,
     modeDePaiment_field: req.body.modeDePaimentField
   });
-
-
-
-
-  // ----------------------DISPLAY THE INFO------------------------------------------------
 
 
 });
@@ -84,9 +97,54 @@ app.get('/enContact',(req,res)=>{
   res.render('enContact');
 });
 
-app.post('/enConfirmation', (req,res)=>{
-  res.render('enConfirmation');
-})
+
+
+
+app.post('/enConfirmation',(req,res)=>{
+
+  setTimeout(()=>{
+    MongoClient.connect(MONGO_URL, (err, db) => {
+      if (err) {
+        return console.log(err);
+      }
+      // Do something with db here, like inserting a record
+      db.collection('subscriptions').insertOne(
+        {
+          nom_field: req.body.nomField,
+          prenom_field: req.body.prenomField,
+          pseudo_field: req.body.pseudoField,
+          dateDeNaissance_field:req.body.dateDeNaissanceField,
+          numTelephone_field: req.body.numTelephoneField,
+          email_field:req.body.emailField,
+          modeDePaiment_field: req.body.modeDePaimentField,
+          language: "EN"
+        },
+        function (err, res) {
+          if (err) {
+            db.close();
+            return console.log(err);
+          }
+          // Success
+          db.close();
+        }
+      )
+    });
+  }, 3000);
+
+
+  res.render('enConfirmation',{
+    nom_field: req.body.nomField,
+    prenom_field: req.body.prenomField,
+    pseudo_field: req.body.pseudoField,
+    dateDeNaissance_field:req.body.dateDeNaissanceField,
+    numTelephone_field: req.body.numTelephoneField,
+    email_field:req.body.emailField,
+    modeDePaiment_field: req.body.modeDePaimentField
+  });
+
+
+});
+
 
 app.get('/enReglement', (req,res)=>{
   res.render('enReglement');
@@ -109,22 +167,61 @@ app.get('/nlContact',(req,res)=>{
   res.render('nlContact');
 });
 
-app.post('/nlConfirmation', (req,res)=>{
-  res.render('nlConfirmation');
-})
+
+
+
+
+app.post('/nlConfirmation',(req,res)=>{
+
+  setTimeout(()=>{
+    MongoClient.connect(MONGO_URL, (err, db) => {
+      if (err) {
+        return console.log(err);
+      }
+      // Do something with db here, like inserting a record
+      db.collection('subscriptions').insertOne(
+        {
+          nom_field: req.body.nomField,
+          prenom_field: req.body.prenomField,
+          pseudo_field: req.body.pseudoField,
+          dateDeNaissance_field:req.body.dateDeNaissanceField,
+          numTelephone_field: req.body.numTelephoneField,
+          email_field:req.body.emailField,
+          modeDePaiment_field: req.body.modeDePaimentField,
+          language: "NL"
+        },
+        function (err, res) {
+          if (err) {
+            db.close();
+            return console.log(err);
+          }
+          // Success
+          db.close();
+        }
+      )
+    });
+  }, 3000);
+
+
+  res.render('nlConfirmation',{
+    nom_field: req.body.nomField,
+    prenom_field: req.body.prenomField,
+    pseudo_field: req.body.pseudoField,
+    dateDeNaissance_field:req.body.dateDeNaissanceField,
+    numTelephone_field: req.body.numTelephoneField,
+    email_field:req.body.emailField,
+    modeDePaiment_field: req.body.modeDePaimentField
+  });
+
+
+});
+
 
 app.get('/nlReglement', (req,res)=>{
   res.render('nlReglement');
 });
 
-// {
-//     nom_field: req.body.nom_field,
-//     prenom_field: req.body.prenom_field,
-//     pseudo_field: req.body.pseudo_field,
-//     dateDeNaissance_field:req.body.dateDeNaissance_field,
-//     numTelephone_field:req.body.numTelephone_field,
-//     email_field:req.body.email_field
-// }
+
 
 app.listen(port, ()=>{
   console.log(`Server set up on port ${port}`);

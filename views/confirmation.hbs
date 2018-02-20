@@ -10,17 +10,36 @@
 </head>
 <body>
 
-  <h1>Confirmation</h1>
+  {{> navbar}}
 
-  <ol>
-    <li>{{nom_field}}</li>
-    <li>{{prenom_field}}</li>
-    <li>{{pseudo_field}}</li>
-    <li>{{dateDeNaissance_field}}</li>
-    <li>{{numTelephone_field}}</li>
-    <li>{{email_field}}</li>
-    <li>{{modeDePaiment_field}}</li>
-  </ol>
+  {{> sliderConfirmation}}
+
+  <div class="container">
+    <div class="row mt-4">
+
+      <div class="col-md-6 ">
+        <div class="card p-4 mb-2  ml-5">
+          <div class="card-body">
+            <h4><p class="lead" id="slider-text">Les données ci-dessous ont étées enregistrées. Nous vous recontacterons le plus vite possible par mail!</p>
+            </h4>
+            <ol class="list-group">
+              <li class="list-group-item">Nom: {{nom_field}}</li>
+              <li class="list-group-item">Prenom: {{prenom_field}}</li>
+              <li class="list-group-item">Pseudo: {{pseudo_field}}</li>
+              <li class="list-group-item">Date de Naissance: {{dateDeNaissance_field}}</li>
+              <li class="list-group-item">Numéro de Téléphone: {{numTelephone_field}}</li>
+              <li class="list-group-item">Email: {{email_field}}</li>
+              <li class="list-group-item">Mode de Paiment: {{modeDePaiment_field}}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {{> footer}}
 
 
 
